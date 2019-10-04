@@ -17,6 +17,16 @@
             return newArr;
         }
     </script>
+    <script>
+
+        let map = function (arr, func, thisArg) {
+            let results = [];
+            for (let i = 0; i < arr.length; i = i + 1) {
+                results.push(func.call(thisArg, arr[i], i, arr));
+            }
+            return results;
+        };
+    </script>
 
 </body>
 

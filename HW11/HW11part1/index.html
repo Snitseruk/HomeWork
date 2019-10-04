@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+    <script>
+        function setCounter(initial, step) {
+            let currentCount = initial;
+            function counter() {
+                let newCount = currentCount;
+                currentCount += step;
+                return newCount;
+            }
+            counter.clear = function () {
+                currentCount = initial;
+            };
+            return counter;
+        };
+
+        let counter = setCounter(3, 5);
+
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        counter.clear();
+        console.log(counter());
+        console.log(counter());
+
+
+    </script>
+</body>
+
+</html>
