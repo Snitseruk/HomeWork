@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+
+    <script>
+        //Вам нужно написать функцию, которая сравнивает 2 массива из простых элементов. Элементы могут быть в произвольном
+        //порядке. Если длина массивов разная, то берем длину меньшего.
+
+
+        const arr1 = [1, 2, 3, 4, 5, 6, 7];
+        const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        function comp() {
+
+            if (arr1.length === arr2.length || arr1.length < arr2.length) {
+                return arr1.some(el => arr2.includes(el));
+            } else {
+                return arr2.some(el => arr1.includes(el));
+            }
+        }
+        console.log(comp());
+
+    </script>
+</body>
+
+</html>
