@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+    <script>
+
+        const Student = function (name, surname, bday) {
+            this.name = name,
+                this.surname = surname,
+                this.bday = bday,
+                this.attendance = new Array(30);
+            this.counter = 0;
+            this.counterMarks = 0;
+            this.marksArray = new Array(30);
+        };
+
+        Student.prototype.getFullName = function () {
+            return `${this.name} ${this.surname}`
+        };
+        Student.prototype.getAge = function () {
+            const currentDate = new Date;
+            return currentDate.getFullYear() - this.bday;
+        }
+
+        Student.prototype.mark = function (el) {
+            this.marksArray[this.counterMarks] = el;
+            this.counterMarks++;
+        }
+
+        Student.prototype.getAverageMark = function () {
+            return this.marksArray.reduce((a, b) => a + b) / this.counterMarks;
+        }
+
+        Student.prototype.present = function () {
+            this.attendance[this.counter] = true;
+            this.counter++
+        };
+        Student.prototype.absent = function () {
+            this.attendance[this.counter] = false
+            this.counter++
+        };
+
+        Student.prototype.getAverageAttendance = function () {
+            return this.attendance.reduce((a, b) => a + b) / this.counter;
+        }
+
+        Student.prototype.summary = function () {
+            if (this.getAverageMark() >= 9 && this.getAverageAttendance() >= 0.9) {
+                return 'Ути какой молодчинка!';
+            } else if ((this.getAverageMark() >= 9 && this.getAverageAttendance() < 0.9) || (this.getAverageMark() <= 9 && this.getAverageAttendance() > 0.9)) {
+                return 'Норм, но можно лучше';
+            } else if (this.getAverageMark() < 9 && this.getAverageAttendance() < 0.9) {
+                return 'Редиска!';
+            }
+        };
+
+        const Oleg = new Student('Oleg', 'Petrov', 1987);
+        const Ivan = new Student('Ivan', 'Ivanov', 1990);
+        console.log(Oleg.getFullName());
+        console.log(Ivan.getFullName());
+        console.log(Oleg.getAge());
+        console.log(Ivan.getAge());
+        Ivan.mark(10);
+        Ivan.mark(8);
+        Ivan.mark(10);
+        Ivan.mark(9);
+        Oleg.mark(5);
+        Oleg.mark(6);
+        Oleg.mark(7);
+        Oleg.mark(8);
+        Oleg.mark(9);
+        Oleg.mark(10);
+        console.log(Oleg.marksArray);
+        console.log(Ivan.marksArray);
+        console.log(Ivan.getAverageMark());
+        console.log(Oleg.getAverageMark());
+
+        Oleg.present();
+        Oleg.present();
+        Oleg.absent();
+        Oleg.present();
+        Oleg.present();
+
+        Ivan.absent();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+        Ivan.present();
+
+        console.log(Oleg.attendance);
+        console.log(Oleg.attendance);
+        console.log(Ivan.getAverageAttendance());
+        console.log(Oleg.getAverageAttendance());
+        console.log(Oleg.summary());
+        console.log(Ivan.summary());
+
+    </script>
+
+</body>
+
+</html>
