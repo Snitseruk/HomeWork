@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+    <script>
+        /*ToDo list (данные)
+Вам нужно создать список задач, который умеет:
+-добавлять новые задачи и проверять их уникальность. У каждой задачи есть статус, время создания и текст
+-удалять задачу, но с условием (тут передаете в качестве аргумента confirm)
+-редактировать задачу (тоже спрашиваете нужно ли сохранить изменения)
+-выводить общее количество задач, сколько выполнили и сколько осталось
+Ах, да! Это не просто объект - вам нужно сделать так, чтоб в него нельзя было вносить изменения, чтоб никто не переписал случайно его методы)*/
+
+        const toDoList = {
+            id: 0,
+            tasks: [],
+
+            addTask: function (newText) {
+                let check = 0;
+                this.tasks.forEach(el => {
+                    if (el.taskText === newText) {
+                        check = 'this text is already exist';
+                    }
+                });
+                if (check === 'this text is already exist') {
+                    console.log('this text is already exist');
+                } else {
+                    this.tasks.push({
+                        taskId: this.id++ + 1,
+                        taskText: newText,
+                        status: 'in process',
+                        date: new Date().getTime(),
+                    });
+
+                }
+            },
+
+            deleteTask: function (id, confirmation) {
+                let deletedIndex = -1;
+                if (confirmation === 'ok') {
+                    this.tasks.findIndex(function (el, index) {
+                        if (el.taskId === id) {
+                            deletedIndex = index;
+                        }
+                    });
+                    this.tasks.splice(deletedIndex, 1);
+                }
+
+            },
+            //второй вариант удаления
+            deleteTask2: function (id, confirmation) {
+                if (confirmation === 'ok') {
+                    this.tasks = this.tasks.filter((el) => el.taskId !== id)
+                }
+            },
+
+
+            editTask: function (id, confirmation, updatedText) {
+                let deletedIndex = -1;
+                if (confirmation === 'ok') {
+                    this.tasks.findIndex(function (el, index) {
+                        if (el.taskId === id) {
+                            deletedIndex = index;
+                        }
+
+                    });
+                    console.log(deletedIndex);
+                }
+                Object.assign(this.tasks[deletedIndex], { taskText: updatedText })
+            },
+
+            showAllTasksNumber: function () {
+                return this.tasks.length;
+            },
+            changeStatusDone: function (id) {
+                this.tasks.forEach(function (el) {
+                    if (el.taskId === id) {
+                        el.status = 'done';
+                    }
+                }
+                )
+            },
+
+            showDoneTask: function () {
+                return this.tasks.reduce(function (counter, el) {
+                    if (el.status === 'done') {
+                        counter++;
+                    }
+                    return counter
+                }, 0);
+            },
+
+
+            showInProcessTask: function () {
+                return this.tasks.reduce(function (counter, el) {
+                    if (el.status === 'in process') {
+                        counter++;
+                    }
+                    return counter
+                }, 0);
+            },
+
+
+        };
+        Object.seal(toDoList);
+
+
+        toDoList.addTask('Buy tickets');
+        toDoList.addTask('Go shopping');
+        toDoList.addTask('Do your homework');
+        toDoList.addTask('Go shopping');
+        toDoList.addTask('Watch movie');
+        toDoList.addTask('Read news');
+        toDoList.changeStatusDone(2)
+        toDoList.changeStatusDone(3)
+        console.log(toDoList.tasks);
+        toDoList.deleteTask(2, 'ok');
+        toDoList.deleteTask2(3, 'ok');
+        console.log(toDoList.tasks);
+
+        toDoList.editTask(5, 'ok', 'start smthng new');
+        console.log(toDoList.tasks);
+        console.log(`To show all tasks - ${toDoList.showAllTasksNumber()}`);
+        console.log(`To show done tasks - ${toDoList.showDoneTask()}`);
+        console.log(`To show unfinished tasks - ${toDoList.showInProcessTask()}`);
+
+
+    </script>
+
+</body>
+
+</html>
