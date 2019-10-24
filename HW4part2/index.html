@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home Work 3</title>
+</head>
+<body>
+
+<script>
+	/*var triangleHeight = +prompt('Введите положительное число для построения треугольника', '1');
+	var res = "";
+	var triangle = "";
+
+	for (var i = 0; i < triangleHeight; i++) {
+		res += "*";
+		triangle += '\n' + res;
+   	}
+		console.log(triangle);
+
+*/
+			
+let triangleHeight = + prompt('Введите число для построения треугольника', ' ');
+let triangleSign = prompt('Введите символ для построения треугольника', ' ');
+	
+	while (triangleSign.length !== 1) {
+		alert ('Введите только один знак');
+			triangleSign = prompt ('Введите один символ');
+	}	
+		
+		function buildTriangle (triangleHeight, triangleSign) {
+				let res = "";
+				triangle = "";
+							
+					for (let i = 0; i < triangleHeight; i++) { 
+							res += triangleSign;
+							triangle += '\n' + res;
+					}
+						return triangle; 
+   	}
+
+	let b = buildTriangle(triangleHeight, triangleSign);
+
+			console.log(b);
+
+	</script>
+
+    
+
+</body>
+</html>
