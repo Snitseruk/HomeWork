@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+	<meta charset="UTF-8">
+          <title>Hello World!</title>
+    </head>
+    <body>
+		
+     <script>
+	 	
+	 	 var UserAge = prompt('Ваш возраст?', ' ');
+		 var AgeCount = UserAge % 100; 
+		 var AgeCalc = UserAge % 10;
+		 
+		 if ( AgeCount > 5 && AgeCount <=20 ) {
+			console.log ('лет');
+			
+		 } 	else if (AgeCalc == 1) {
+				console.log ('год');
+
+		 }	else if (AgeCalc >= 2 && AgeCalc <= 4) {
+				console.log ('года');
+				
+		 }	else {
+				console.log ('лет');
+		 }
+						
+	 </script>
+    </body>
+</html>
