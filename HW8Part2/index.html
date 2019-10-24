@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+
+    <script>
+        let num = +prompt('Enter the number', ' ')
+        let counter = 0;
+
+        function checkPalindrom(num) {
+            if (num !== +(num.toString().split('').reverse().join(''))) {
+                num = num + (+num.toString().split('').reverse().join(''));
+                counter++;
+                checkPalindrom(num);
+                return num;
+
+            } else {
+                return num;
+            }
+        }; console.log(checkPalindrom(num), counter);
+
+
+
+    </script>
+</body>
+
+</html>

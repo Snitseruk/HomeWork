@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+    <script>
+
+        let arr = [
+            [16, -37, 54, -4, 72],
+            [-56, 47, 4, -16, 25],
+            [-37, 46, 4, -51, 27],
+            [-63, 4, -54, 76, -4],
+            [12, -35, 4, 47]
+        ];
+
+        //1.Найти сумму и количество положительных элементов.
+
+        function positiveEl(current_array) {
+            let sum = 0;
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i]; if (Array.isArray(current)) {
+                    sum += positiveEl(current);
+                } else if (current > 0) {
+                    sum += current;
+                }
+            }
+            return sum;
+        };
+
+        console.log(positiveEl(arr));
+
+
+        //2.Найти минимальный элемент массива и его порядковый номер.
+
+        let min = Infinity;
+        function minEl(current_array) {
+
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    minEl(current);
+                } else {
+                    if (current < min) {
+                        min = current;
+                    }
+                }
+            } return min;
+        };
+
+
+        let xIndex = 0;
+        let yIndex = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] === minEl(arr)) {
+                    xIndex = [i]; yIndex = [j];
+                }
+            }
+        }
+
+
+        console.log(minEl(arr));
+        console.log(xIndex, yIndex);
+
+
+
+
+
+        //3.Найти максимальный элемент массива и его порядковый номер.
+
+        let maxEl = 0;
+        function maxElement(current_array) {
+
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    maxElement(current);
+                } else {
+                    if (current > maxEl) {
+                        maxEl = current;
+                    }
+                }
+            } return maxEl;
+        };
+
+        let maxIndex = 0;
+        let maxIndexInner = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] === maxElement(arr)) {
+                    maxIndex = [i]; maxIndexInner = [j];
+                }
+            }
+        }
+
+
+        console.log(maxElement(arr));
+        console.log(maxIndex, maxIndexInner);
+
+
+
+        //4.Определить количество отрицательных элементов.
+
+
+        let minusCount = 0;
+
+        function minusEl(current_array) {
+
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    minusEl(current);
+                } else if (current < 0) {
+                    minusCount++;
+                }
+            } return minusCount;
+        };
+        console.log(minusEl(arr));
+
+
+
+
+        //5.Найти количество нечетных положительных элементов.
+
+        let oddEl = 0;
+
+        function oddElement(current_array) {
+
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    oddElement(current);
+                } else if (current > 0 && current % 2 !== 0) {
+                    oddEl++;
+                }
+
+            } return oddEl;
+        };
+        console.log(oddElement(arr));
+
+
+        //6.Найти количество четных положительных элементов.
+
+
+        let evenEl = 0;
+        function evenElement(current_array) {
+
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    evenElement(current);
+                } else if (current > 0 && current % 2 === 0) {
+                    evenEl++;
+                }
+            } return evenEl;
+        }; console.log(evenElement(arr));
+
+
+        //7.Найти сумму четных положительных элементов.
+
+        function sumElement(current_array) {
+            let sumEl = 0;
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i]; if (Array.isArray(current)) {
+                    sumEl += sumElement(current);
+                } else if (current > 0 && current % 2 === 0) {
+                    sumEl += current;
+                }
+            }
+            return sumEl;
+        };
+        console.log(sumElement(arr));
+
+
+
+
+        //8.Найти сумму нечетных положительных элементов.
+
+
+        function sumOddElement(current_array) {
+            let sumOddEl = 0;
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    sumOddEl += sumOddElement(current);
+                } else if (current > 0 && current % 2 !== 0) {
+                    sumOddEl += current;
+                }
+            }
+            return sumOddEl;
+        };
+        console.log(sumOddElement(arr));
+
+
+
+
+        //9.Найти произведение положительных элементов.
+
+        function positiveElement(current_array) {
+            let positive = 1;
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    positive *= positiveElement(current);
+                } else if (current > 0) {
+                    positive *= current;
+                }
+            }
+            return positive;
+        };
+        console.log(positiveElement(arr));
+
+
+
+
+        //10.Найти определить количество элементов, равных 4.
+
+        let count = 0;
+        function countElement(current_array) {
+
+            for (let i = 0; i < current_array.length; i++) {
+                let current = current_array[i];
+                if (Array.isArray(current)) {
+                    countElement(current);
+                } else if (current === 4) { count++; }
+                else if (current === -4) { count++; }
+            } return count;
+        };
+        console.log(countElement(arr))
+
+
+
+
+        //11.Найти наибольший среди элементов массива, остальные обнулить.
+
+
+        let max = 0;
+        arr.forEach(
+            function (x) {
+                return x.forEach(
+                    function (y) {
+                        return max = y > max ? y : max;
+                    })
+            });
+
+        let newArr = arr.map(function (x) {
+            return x.map(
+                function (y) {
+                    return y === max ? max : 0;
+                });
+        });
+        console.log(newArr);
+    </script>
+
+</body>
+
+</html>
