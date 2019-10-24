@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<script>
+		/*Запросить у пользователя число, которое будет высотой вершины прямоугольного треугольника. 
+		Весь треугольник должен быть одной строкой. Например, console.log(triangle) в консоль выведет:
+		*
+		**
+		*** 
+		*/
+
+		var triangleHeight = +prompt('Введите положительное число?', '1');
+		var triangle = " ";
+
+		for (i = 0; i < triangleHeight; i++) {
+
+			triangle += "*";
+			console.log(triangle);
+		}
+
+	</script>
+
+</body>
+
+</html>
