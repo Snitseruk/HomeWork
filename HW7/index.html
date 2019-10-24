@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+
+    <script>
+        /*Тренируем методы массивов
+        1. Внимание, это задание нужно выполнить используя методы массива (никаких for)
+        Дан массив:
+        var arr = [-246, 753, -468, 475, -683, 476, -583, 746, -581];
+        1) найти сумму элементов массива
+        2) получить массив который состоит из отрицательных элементов из исходного массива
+        3) получить массив из элементов деленных на два (например, если был массив [4, 3, 8] то получим [2,1.5,4])
+        4) найти результат суммирования элементов массива, но в случае, если элемент отрицательный - делим его на 2, 
+        а в случае, когда положительный - умножаем на 2.
+        */
+
+
+        let arr = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];
+        //1.Найти сумму и количество положительных элементов.
+        let result = arr.filter((el) => el > 0);
+        let sum = result.reduce(function (sum, el) {
+            return sum + el;
+        }, 0);
+
+        console.log(sum);
+        console.log(result.length);
+
+        //2.Найти минимальный элемент массива и его порядковый номер.
+
+        let min = Math.min(...arr);
+        let position = arr.indexOf(min) + 1;
+
+        console.log(min, position);
+
+        //3.Найти максимальный элемент массива и его порядковый номер.
+
+
+        let max = Math.max(...arr);
+        let positionMax = arr.indexOf(max) + 1;
+
+        console.log(max, positionMax);
+
+
+        //4.Определить количество отрицательных элементов.
+
+        let count = arr.filter(function (el) {
+            return el < 0;
+        }).length;
+
+        console.log(count);
+
+
+
+        //5.Найти количество нечетных положительных элементов.
+
+        let countOdd = arr.filter(function (el) {
+            return el > 0 && el % 2 !== 0;
+        }).length;
+
+        console.log(countOdd);
+
+        //6.Найти количество четных положительных элементов.
+
+        let countEven = arr.filter(function (el) {
+            return el > 0 && el % 2 === 0;
+        }).length;
+
+        console.log(countEven);
+
+        //7. Найти сумму четных положительных элементов
+
+        let countPositive = arr.reduce(function (sum, el) {
+            if (el > 0 && el % 2 === 0) {
+                sum += el;
+            } return sum;
+        }, 0);
+
+        console.log(countPositive);
+
+        //8.Найти сумму нечетных положительных элементов.
+
+        let countPositiveEl = arr.reduce(function (sum, el) {
+            if (el > 0 && el % 2 !== 0) {
+                sum += el;
+            } return sum;
+        }, 0);
+
+        console.log(countPositiveEl);
+
+        //9.Найти произведение положительных элементов.
+
+        let countMultiply = arr.reduce(function (sum, el) {
+            if (el > 0) {
+                sum = sum * el;
+            } return sum;
+        });
+
+        console.log(countMultiply);
+
+
+        //10. Определить количество элементов, равных 4.
+
+        let countFour = arr.filter(function (el) {
+            return el === 4;
+        }).length;
+        let counter = arr.filter(function (el) {
+            return el === -4;
+        }).length;
+        let sumEl = countFour + counter;
+
+        console.log(sumEl);
+
+
+        //11. Найти наибольший среди элементов массива, остальные обнулить.
+
+        let maxEl = Math.max(...arr);
+        let newArr = arr.map(el => el == maxEl ? el : 0);
+
+        console.log(newArr);
+
+
+        //12.Вычислить разность соответствующих элементов массивов и записать в новый массив.
+
+        let arr1 = [46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47, 16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37];
+        let arr3 = [];
+        for (let i = 0; i <= arr.length - 1; i++) {
+
+            arr3.push(arr[i] - arr1[i]);
+        };
+
+        console.log(arr3);
+
+    </script>
+</body>
+
+</html>
