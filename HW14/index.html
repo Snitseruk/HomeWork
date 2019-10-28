@@ -16,39 +16,33 @@
 -выводить общее количество задач, сколько выполнили и сколько осталось
 Ах, да! Это не просто объект - вам нужно сделать так, чтоб в него нельзя было вносить изменения, чтоб никто не переписал случайно его методы)*/
 
+        let id = function () {
+            return Math.random().toString(36).substr(2, 2);
+        };
+
         const toDoList = {
-            id: 0,
+
             tasks: [],
 
             addTask: function (newText) {
-                let check = 0;
-                this.tasks.forEach(el => {
-                    if (el.taskText === newText) {
-                        check = 'this text is already exist';
-                    }
+                indexElement = this.tasks.findIndex(function (el, index) {
+                    return el.taskText === newText;
                 });
-                if (check === 'this text is already exist') {
-                    console.log('this text is already exist');
-                } else {
+                if (indexElement === -1) {
                     this.tasks.push({
-                        taskId: this.id++ + 1,
+                        taskId: id(),
                         taskText: newText,
                         status: 'in process',
                         date: new Date().getTime(),
                     });
-
-                }
+                } else { console.log('this task is already exist'); }
             },
 
+
             deleteTask: function (id, confirmation) {
-                let deletedIndex = -1;
                 if (confirmation === 'ok') {
-                    this.tasks.findIndex(function (el, index) {
-                        if (el.taskId === id) {
-                            deletedIndex = index;
-                        }
-                    });
-                    this.tasks.splice(deletedIndex, 1);
+                    taskIndex = this.tasks.findIndex((el, index) => el.taskId === id);
+                    this.tasks.splice(taskIndex, 1);
                 }
 
             },
@@ -59,19 +53,14 @@
                 }
             },
 
-
             editTask: function (id, confirmation, updatedText) {
-                let deletedIndex = -1;
                 if (confirmation === 'ok') {
-                    this.tasks.findIndex(function (el, index) {
-                        if (el.taskId === id) {
-                            deletedIndex = index;
-                        }
+                    taskIndex = this.tasks.findIndex((el, index) => el.taskId === id);
 
-                    });
-                    console.log(deletedIndex);
-                }
-                Object.assign(this.tasks[deletedIndex], { taskText: updatedText })
+                }; console.log(taskIndex);
+                if (taskIndex !== -1) {
+                    Object.assign(this.tasks[taskIndex], { taskText: updatedText })
+                };
             },
 
             showAllTasksNumber: function () {
@@ -95,7 +84,6 @@
                 }, 0);
             },
 
-
             showInProcessTask: function () {
                 return this.tasks.reduce(function (counter, el) {
                     if (el.status === 'in process') {
@@ -107,7 +95,7 @@
 
 
         };
-        Object.seal(toDoList);
+        Object.freeze(toDoList);
 
 
         toDoList.addTask('Buy tickets');
@@ -115,15 +103,10 @@
         toDoList.addTask('Do your homework');
         toDoList.addTask('Go shopping');
         toDoList.addTask('Watch movie');
+        toDoList.addTask('Learn JS');
         toDoList.addTask('Read news');
         toDoList.changeStatusDone(2)
         toDoList.changeStatusDone(3)
-        console.log(toDoList.tasks);
-        toDoList.deleteTask(2, 'ok');
-        toDoList.deleteTask2(3, 'ok');
-        console.log(toDoList.tasks);
-
-        toDoList.editTask(5, 'ok', 'start smthng new');
         console.log(toDoList.tasks);
         console.log(`To show all tasks - ${toDoList.showAllTasksNumber()}`);
         console.log(`To show done tasks - ${toDoList.showDoneTask()}`);
