@@ -17,7 +17,7 @@
 Ах, да! Это не просто объект - вам нужно сделать так, чтоб в него нельзя было вносить изменения, чтоб никто не переписал случайно его методы)*/
 
         let id = function () {
-            return Math.random().toString(36).substr(2, 2);
+            return Math.random().toString(36).substr(2, 10);
         };
 
         const toDoList = {
