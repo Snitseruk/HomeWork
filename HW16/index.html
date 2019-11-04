@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+    <!-- Вам нужно написать функцию, 
+        которая будет принимать селектор вашего списка и выстраивать
+         его в нужном порядке (без sort), изменяя контент внутри li -->
+
+    <ul>
+        <li>item - 2</li>
+        <li>item - 1</li>
+        <li>item - 3</li>
+        <li>item - 4</li>
+        <li>item - 8</li>
+        <li>item - 5</li>
+        <li>item - 7</li>
+        <li>item - 6</li>
+    </ul>
+
+    <script>
+
+        const $listItems = document.querySelectorAll('li');
+        let counter = 1;
+        $listItems.forEach((listItem, index, arr) => {
+            const itemContent = listItem.innerText
+            const itemContentNumber = itemContent.substr(6);
+            console.log(itemContentNumber);
+
+            if (index && itemContentNumber !== arr[index].innerText) {
+                function change() {
+                    return counter;
+                }; counter++;
+            }
+            console.log(counter);
+            listItem.innerText = itemContent.replace(itemContent[itemContent.length - 1], counter);
+        });
+
+
+    </script>
+
+</body>
+
+</html>

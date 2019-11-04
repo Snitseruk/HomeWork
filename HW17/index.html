@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Work</title>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+    <script>
+        let arr = ['item - 01', 'item - 02', ['item - 2.1', 'item - 2.2', 'item - 2.3'], 'item - 03', ['item - 3.1', 'item - 3.2', 'item - 3.3']];
+        console.log(arr);
+        // (function () {
+        //     let elem = document.createElement('li');
+        //      let content = document.createTextNode('');
+        //     wrapped = document.querySelector('ul');
+        //     elem.appendChild(content);
+        //     wrapped.parentNode.appendChild(elem);
+        //     console.log(elem);
+        // })();
+
+        let list = document.querySelector('ul');
+        function fillList(list, arr) {
+            for (let i = 0; i < arr.length; i++) {
+                let elem = document.createElement('ul');
+
+                for (let j = 0; j < arr[i].length; j++) {
+                    let content = document.createElement('li');
+                    li.innerHTML = arr[i][j];
+                    ul.appendChild(li);
+                }
+                list.apendChild(ul);
+            }
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
