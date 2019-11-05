@@ -16,7 +16,6 @@
                     this.surname = surname,
                     this.bday = bday,
                     this.attendance = new Array(30);
-                this.counter = 0;
                 this.counterMarks = 0;
                 this.marksArray = new Array(30);
             };
@@ -27,27 +26,49 @@
             get age() {
                 const currentDate = new Date;
                 return currentDate.getFullYear() - this.bday;
-            }
+            };
 
             mark(el) {
-                return this.marksArray.reduce((el) => el += el);
-            }
+                let markIndex = this.marksArray.findIndex((el) => el == undefined);
+                if (markIndex > -1) {
+                    this.marksArray.splice(markIndex, 1, el);
+                }
+            };
 
             get averageMark() {
-                return this.marksArray.reduce((a, b) => a + b) / this.counterMarks;
-            }
+                let marksIndex = this.marksArray.findIndex((el) => el == undefined);
+                if (marksIndex > -1) {
+                    return this.marksArray.reduce((a, b) => a + b) / marksIndex;
+                } else if (marksIndex === 30) {
+                    return this.marksArray.reduce((a, b) => a + b) / 30;
+                }
+            };
 
             present() {
-                this.attendance[this.counter] = true;
-                this.counter++
+                let presentIndex = this.attendance.findIndex((el) => el == undefined);
+                if (presentIndex > -1) {
+                    this.attendance.splice(presentIndex, 1, true);
+                } else if (presentIndex <= -1) {
+                    console.log("Проверьте посещаемость.Занятий больше нет")
+                }
             };
             absent() {
-                this.attendance[this.counter] = false
-                this.counter++
+                let absentIndex = this.attendance.findIndex((el) => el == undefined);
+                if (absentIndex > -1) {
+                    this.attendance.splice(absentIndex, 1, false);
+                } else if (presentIndex <= -1) {
+                    console.log("Проверьте посещаемость.Занятий больше нет")
+                }
             };
 
             get averageAttendance() {
-                return this.attendance.reduce((a, b) => a + b) / this.counter;
+                let totalIndex = this.attendance.findIndex((el) => el === undefined);
+                if (totalIndex === -1) {
+                    return this.attendance.reduce((a, b) => a + b) / 30;
+                } else {
+                    return this.attendance.reduce((a, b) => a + b) / totalIndex;
+                }
+
             }
 
             summary() {
@@ -99,9 +120,9 @@
         Ivan.present();
         Ivan.present();
         Ivan.present();
+        console.log(Oleg.attendance);
+        console.log(Oleg.attendance);
 
-        console.log(Oleg.attendance);
-        console.log(Oleg.attendance);
         console.log(Ivan.averageAttendance);
         console.log(Oleg.averageAttendance);
         console.log(Oleg.summary());
