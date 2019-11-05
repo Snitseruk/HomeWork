@@ -30,8 +30,7 @@
             }
 
             mark(el) {
-                this.marksArray[this.counterMarks] = el;
-                this.counterMarks++;
+                return this.marksArray.reduce((el) => el += el);
             }
 
             get averageMark() {

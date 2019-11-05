@@ -7,9 +7,7 @@
 </head>
 
 <body>
-    <ul>
-
-    </ul>
+    <div> </div>
     <script>
         let arr = ['item - 01', 'item - 02', ['item - 2.1', 'item - 2.2', 'item - 2.3'], 'item - 03', ['item - 3.1', 'item - 3.2', 'item - 3.3']];
         console.log(arr);
@@ -22,7 +20,7 @@
         //     console.log(elem);
         // })();
 
-        let list = document.querySelector('ul');
+        let list = document.querySelector('div');
         function fillList(list, arr) {
             for (let i = 0; i < arr.length; i++) {
                 let elem = document.createElement('ul');
