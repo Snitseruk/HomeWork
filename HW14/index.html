@@ -45,20 +45,20 @@
             },
 
             deleteTask: function (taskId, confirm) {
-                if (confirm) {
+                if (confirm()) {
                     taskIndex = this.tasks.findIndex((el, index) => el.taskId === taskId);
                     this.tasks.splice(taskIndex, 1);;
                 }
             },
             //второй вариант удаления
             deleteTask2: function (taskId, confirm) {
-                if (confirm) {
+                if (confirm()) {
                     this.tasks = this.tasks.filter((el) => el.taskId !== taskId)
                 }
             },
 
             editTask: function (id, confirm, updatedText) {
-                if (confirm) {
+                if (confirm()) {
                     taskIndex = this.tasks.findIndex((el, index) => el.taskId === id);
                 }; console.log(taskIndex);
                 if (taskIndex !== -1) {
