@@ -61,15 +61,22 @@
                 }
             };
 
-            get averageAttendance() {
-                let totalIndex = this.attendance.findIndex((el) => el === undefined);
-                if (totalIndex === -1) {
-                    return this.attendance.reduce((a, b) => a + b) / 30;
-                } else {
-                    return this.attendance.reduce((a, b) => a + b) / totalIndex;
-                }
+            // get averageAttendance() {
+            //     let totalIndex = this.attendance.findIndex((el) => el === undefined);
+            //     if (totalIndex === -1) {
+            //         return this.attendance.reduce((a, b) => a + b) / 30;
+            //     } else {
+            //         return this.attendance.reduce((a, b) => a + b) / totalIndex;
+            //     }
 
-            }
+            // }
+            get averageAttendance() {
+                let avarageVisit = this.attendance.filter(el => el !== undefined).length;
+                return this.attendance.reduce((a, b) => a + b) / avarageVisit;
+                console.log(avarageVisit);
+
+            };
+
 
             summary() {
                 if (this.averageMark >= 9 && this.averageAttendance >= 0.9) {
@@ -89,20 +96,20 @@
         console.log(Ivan.fullName);
         console.log(Oleg.age);
         console.log(Ivan.age);
-        Ivan.mark(10);
-        Ivan.mark(8);
-        Ivan.mark(10);
-        Ivan.mark(9);
-        Oleg.mark(5);
-        Oleg.mark(6);
-        Oleg.mark(7);
-        Oleg.mark(8);
-        Oleg.mark(9);
-        Oleg.mark(10);
-        console.log(Oleg.marksArray);
-        console.log(Ivan.marksArray);
-        console.log(Ivan.averageMark);
-        console.log(Oleg.averageMark);
+        // Ivan.mark(10);
+        // Ivan.mark(8);
+        // Ivan.mark(10);
+        // Ivan.mark(9);
+        // Oleg.mark(5);
+        // Oleg.mark(6);
+        // Oleg.mark(7);
+        // Oleg.mark(8);
+        // Oleg.mark(9);
+        // Oleg.mark(10);
+        // console.log(Oleg.marksArray);
+        // console.log(Ivan.marksArray);
+        // console.log(Ivan.averageMark);
+        // console.log(Oleg.averageMark);
 
         Oleg.present();
         Oleg.present();
@@ -125,8 +132,8 @@
 
         console.log(Ivan.averageAttendance);
         console.log(Oleg.averageAttendance);
-        console.log(Oleg.summary());
-        console.log(Ivan.summary());
+        // console.log(Oleg.summary());
+        // console.log(Ivan.summary());
 
 
     </script>
