@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>TO DO LIST</title>
+</head>
+
+<body>
+    <div class="box">
+        <form>
+            <input type="text" class="noteInput">
+            <button class="addNote">Add new Note</button>
+        </form>
+        <ul class="noteList">
+            <li class="noteItem">
+                <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui optio repudiandae aut nemo odio sint
+                    molestias unde natus voluptas, placeat sequi esse beatae laboriosam iusto error, delectus eaque
+                    perferendis aspernatur!</span>
+                <div>
+                    <input type="checkbox">
+                    <button>Delete</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const input = e.target.children[0];
+            console.dir(input.value);
+            input.value = '';
+
+        });
+        // const input = document.querySelector('.noteInput');
+        // const button = document.querySelector('.addNote');
+        // const submitHandler = () => {
+        //     const inputValue = input.value;
+        //     input.value = '';
+        //     console.log(inputValue);
+        // };
+        // button.addEventListener('click', submitHandler);
+
+        // input.addEventListener('keypress', e => {
+        //     if (e.keyCode === 13) {
+        //         submitHandler();
+        //     }
+        // });
+    </script>
+
+</body>
+
+</html>

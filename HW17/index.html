@@ -18,18 +18,18 @@
                 const $li = document.createElement('li');
 
                 if (Array.isArray(el)) {
-                    $li.appendChild(makeList(el));
+                    $li.append(makeList(el));
                 }
                 else {
                     $li.textContent = el;
                 }
 
-                $ul.appendChild($li);
+                $ul.append($li);
             });
 
             return $ul;
         }
-        document.querySelector('div').appendChild(makeList(arr));
+        document.querySelector('div').append(makeList(arr));
 
 
 
