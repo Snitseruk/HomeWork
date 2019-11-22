@@ -12,29 +12,71 @@
         <form>
             <input type="text" class="noteInput">
             <button class="addNote">Add new Note</button>
+            <button type="button" class="toggleDone">Hide Done</button>
         </form>
-        <ul class="noteList">
-            <li class="noteItem">
-                <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui optio repudiandae aut nemo odio sint
-                    molestias unde natus voluptas, placeat sequi esse beatae laboriosam iusto error, delectus eaque
-                    perferendis aspernatur!</span>
-                <div>
-                    <input type="checkbox">
-                    <button>Delete</button>
-                </div>
-            </li>
-        </ul>
+        <ul class="noteList"> </ul>
     </div>
     <script>
+
+
+        
 
         const form = document.querySelector('form');
         form.addEventListener('submit', e => {
             e.preventDefault();
             const input = e.target.children[0];
-            console.dir(input.value);
+
+            const li = document.createElement('li');
+            li.classList.add('noteItem');
+
+            const span = document.createElement('span');
+            span.innerText = input.value;
+
+            li.append(span);
+
+            const div = document.createElement('div');
+
+            const checkbox = document.createElement('input');
+            checkbox.setAttribute('type', 'checkbox');
+
+            const button = document.createElement('button');
+            button.innerText = 'Delete';
+
+            div.append(checkbox);
+            div.append(button);
+            li.append(div);
+
+            const list = document.querySelector('.noteList');
+            list.append(li);
             input.value = '';
 
         });
+        
+        const list = document.querySelector('.noteList');
+        list.addEventListener('click', e => {
+            const targetEl = e.target;
+
+            if (targetEl.nodeName === 'INPUT') {
+                const li = targetEl.parentNode.parentNode;
+                li.classList.toggle('done');
+            } else if (targetEl.nodeName === 'BUTTON') {
+                const li = targetEl.parentNode.parentNode;
+                li.remove();
+            }
+        })
+        const hideButton = document.querySelector('.toggleDone');
+        hideButton.addEventListener('click', e => {
+            if (e.target.innerText === 'Hide done') {
+                e.target.innerText = 'Show done';
+            } else {
+                e.target.innerText = 'Hide done'
+            }
+
+            const list = document.querySelector('.noteList');
+            list.classList.toggle('hideDone');
+        });
+
+
         // const input = document.querySelector('.noteInput');
         // const button = document.querySelector('.addNote');
         // const submitHandler = () => {
